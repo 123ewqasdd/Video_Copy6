@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="myVideoModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\FJHW\Projects\Repos\123ewqasdd\Video_Copy\Video_Copy6\Video_Copy6\myVideo.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="myVideoModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\FJHW\Projects\Repos\123ewqasdd\Video_Copy\Video_Copy6\Video_Copy6\myVideo.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="T_CONFIG">
           <Key>
             <PropertyRef Name="ID" />
@@ -49,7 +49,7 @@
           <Property Name="LOGICAL_USESPACE" Type="real" />
           <Property Name="LOGICAL_FREESPACE" Type="real" />
           <Property Name="LOGICAL_PERCENT" Type="real" />
-          <Property Name="IS_ONLINE" Type="bit" Nullable="false" />
+          <Property Name="IS_ONLINE" Type="integer" Nullable="false" />
           <Property Name="FIELD1" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="FIELD2" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="FIELD3" Type="nvarchar" MaxLength="2147483647" />
@@ -78,14 +78,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FILE_INDEX" Type="int" />
+          <Property Name="FILE_INDEX" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="FILE_NAME" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Device_UID" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="FILE_ROOT" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="FILE_DIR" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="FILE_FULLPATH" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="FILE_EXTENSION" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="FILESIZE" Type="int" />
+          <Property Name="FILESIZE" Type="real" />
           <Property Name="FILE_CREATE_TIME" Type="datetime" />
           <Property Name="CREATE_TIME" Type="datetime" />
           <Property Name="FIELD1" Type="nvarchar" MaxLength="2147483647" />
@@ -112,6 +112,9 @@
           <Property Name="VIDEO_COUNT" Type="integer" />
           <Property Name="TARGET_HD_SIZE" Type="real" />
           <Property Name="MEMO" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="SOURCE_SIZE" Type="real" />
+          <Property Name="COPY_COUNT" Type="integer" />
+          <Property Name="TARGET_FREE_SIZE" Type="real" />
         </EntityType>
         <EntityType Name="T_WORKS_SUB">
           <Key>
@@ -120,6 +123,13 @@
           <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PID" Type="integer" Nullable="false" />
           <Property Name="ID_VIDEO" Type="integer" />
+          <Property Name="FILE_NAME" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="FILE_ROOT" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="FILE_DIR" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="FILE_FULLPATH" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="FILE_EXTENSION" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="FILESIZE" Type="real" />
+          <Property Name="CREATE_TIME" Type="datetime" />
         </EntityType>
         <EntityContainer Name="myVideoModelStoreContainer">
           <EntitySet Name="T_CONFIG" EntityType="Self.T_CONFIG" store:Type="Tables" />
@@ -133,8 +143,7 @@
           <EntitySet Name="T_WORKS" EntityType="Self.T_WORKS" store:Type="Tables" />
           <EntitySet Name="T_WORKS_SUB" EntityType="Self.T_WORKS_SUB" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="myVideoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -170,24 +179,6 @@
           <Property Name="FULLFILEPATH" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="FILESIZE" Type="Int64" />
         </EntityType>
-        <EntityType Name="T_DISK_INFO">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PHYSICAL_NAME" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="PHYSCIAL_TOTALSIZE" Type="Double" />
-          <Property Name="LOGICAL_NAME" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LOGICAL_TOTALSIZE" Type="Double" />
-          <Property Name="LOGICAL_USESPACE" Type="Double" />
-          <Property Name="LOGICAL_FREESPACE" Type="Double" />
-          <Property Name="LOGICAL_PERCENT" Type="Double" />
-          <Property Name="IS_ONLINE" Type="Boolean" Nullable="false" />
-          <Property Name="FIELD1" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FIELD2" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="FIELD3" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="FIELD4" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="T_Logs">
           <Key>
             <PropertyRef Name="ID" />
@@ -206,26 +197,6 @@
           <Property Name="NAME" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="MEMO" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="T_Video">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FILE_INDEX" Type="Int32" />
-          <Property Name="FILE_NAME" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="Device_UID" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FILE_ROOT" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="FILE_DIR" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="FILE_FULLPATH" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="FILE_EXTENSION" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="FILESIZE" Type="Int32" />
-          <Property Name="FILE_CREATE_TIME" Type="DateTime" />
-          <Property Name="CREATE_TIME" Type="DateTime" />
-          <Property Name="FIELD1" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="FIELD2" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="FIELD3" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="FIELD4" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="T_Video_Tags">
           <Key>
             <PropertyRef Name="ID" />
@@ -233,6 +204,71 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Video" Type="Int64" Nullable="false" />
           <Property Name="ID_TAGS" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="myVideoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_CONFIG" EntityType="Self.T_CONFIG" />
+          <EntitySet Name="T_COPYACTION" EntityType="Self.T_COPYACTION" />
+          <EntitySet Name="T_COPYACTION_SUB" EntityType="Self.T_COPYACTION_SUB" />
+          <EntitySet Name="T_Logs" EntityType="Self.T_Logs" />
+          <EntitySet Name="T_Tages" EntityType="Self.T_Tages" />
+          <EntitySet Name="T_Video_Tags" EntityType="Self.T_Video_Tags" />
+          <EntitySet Name="T_DISK_INFO" EntityType="myVideoModel.T_DISK_INFO" />
+          <EntitySet Name="T_Video" EntityType="myVideoModel.T_Video" />
+          <EntitySet Name="T_WORKS_SUB" EntityType="myVideoModel.T_WORKS_SUB" />
+          <EntitySet Name="T_WORKS" EntityType="myVideoModel.T_WORKS" />
+        </EntityContainer>
+        <EntityType Name="T_DISK_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PHYSICAL_NAME" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="PHYSCIAL_TOTALSIZE" Type="Double" />
+          <Property Name="LOGICAL_NAME" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="LOGICAL_TOTALSIZE" Type="Double" />
+          <Property Name="LOGICAL_USESPACE" Type="Double" />
+          <Property Name="LOGICAL_FREESPACE" Type="Double" />
+          <Property Name="LOGICAL_PERCENT" Type="Double" />
+          <Property Name="IS_ONLINE" Type="Int64" Nullable="false" />
+          <Property Name="FIELD1" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD2" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD3" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD4" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_Video">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FILE_INDEX" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILE_NAME" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Device_UID" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILE_ROOT" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILE_DIR" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILE_FULLPATH" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILE_EXTENSION" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILESIZE" Type="Double" />
+          <Property Name="FILE_CREATE_TIME" Type="DateTime" />
+          <Property Name="CREATE_TIME" Type="DateTime" />
+          <Property Name="FIELD1" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD2" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD3" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD4" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_WORKS_SUB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PID" Type="Int64" Nullable="false" />
+          <Property Name="ID_VIDEO" Type="Int64" />
+          <Property Name="FILE_NAME" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILE_ROOT" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILE_DIR" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILE_FULLPATH" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILE_EXTENSION" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="FILESIZE" Type="Double" />
+          <Property Name="CREATE_TIME" Type="DateTime" />
         </EntityType>
         <EntityType Name="T_WORKS">
           <Key>
@@ -245,27 +281,10 @@
           <Property Name="VIDEO_COUNT" Type="Int64" />
           <Property Name="TARGET_HD_SIZE" Type="Double" />
           <Property Name="MEMO" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="SOURCE_SIZE" Type="Double" />
+          <Property Name="COPY_COUNT" Type="Int64" />
+          <Property Name="TARGET_FREE_SIZE" Type="Double" />
         </EntityType>
-        <EntityType Name="T_WORKS_SUB">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PID" Type="Int64" Nullable="false" />
-          <Property Name="ID_VIDEO" Type="Int64" />
-        </EntityType>
-        <EntityContainer Name="myVideoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="T_CONFIG" EntityType="Self.T_CONFIG" />
-          <EntitySet Name="T_COPYACTION" EntityType="Self.T_COPYACTION" />
-          <EntitySet Name="T_COPYACTION_SUB" EntityType="Self.T_COPYACTION_SUB" />
-          <EntitySet Name="T_DISK_INFO" EntityType="Self.T_DISK_INFO" />
-          <EntitySet Name="T_Logs" EntityType="Self.T_Logs" />
-          <EntitySet Name="T_Tages" EntityType="Self.T_Tages" />
-          <EntitySet Name="T_Video" EntityType="Self.T_Video" />
-          <EntitySet Name="T_Video_Tags" EntityType="Self.T_Video_Tags" />
-          <EntitySet Name="T_WORKS" EntityType="Self.T_WORKS" />
-          <EntitySet Name="T_WORKS_SUB" EntityType="Self.T_WORKS_SUB" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -307,25 +326,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="T_DISK_INFO">
-            <EntityTypeMapping TypeName="myVideoModel.T_DISK_INFO">
-              <MappingFragment StoreEntitySet="T_DISK_INFO">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="PHYSICAL_NAME" ColumnName="PHYSICAL_NAME" />
-                <ScalarProperty Name="PHYSCIAL_TOTALSIZE" ColumnName="PHYSCIAL_TOTALSIZE" />
-                <ScalarProperty Name="LOGICAL_NAME" ColumnName="LOGICAL_NAME" />
-                <ScalarProperty Name="LOGICAL_TOTALSIZE" ColumnName="LOGICAL_TOTALSIZE" />
-                <ScalarProperty Name="LOGICAL_USESPACE" ColumnName="LOGICAL_USESPACE" />
-                <ScalarProperty Name="LOGICAL_FREESPACE" ColumnName="LOGICAL_FREESPACE" />
-                <ScalarProperty Name="LOGICAL_PERCENT" ColumnName="LOGICAL_PERCENT" />
-                <ScalarProperty Name="IS_ONLINE" ColumnName="IS_ONLINE" />
-                <ScalarProperty Name="FIELD1" ColumnName="FIELD1" />
-                <ScalarProperty Name="FIELD2" ColumnName="FIELD2" />
-                <ScalarProperty Name="FIELD3" ColumnName="FIELD3" />
-                <ScalarProperty Name="FIELD4" ColumnName="FIELD4" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="T_Logs">
             <EntityTypeMapping TypeName="myVideoModel.T_Logs">
               <MappingFragment StoreEntitySet="T_Logs">
@@ -346,27 +346,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="T_Video">
-            <EntityTypeMapping TypeName="myVideoModel.T_Video">
-              <MappingFragment StoreEntitySet="T_Video">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FILE_INDEX" ColumnName="FILE_INDEX" />
-                <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
-                <ScalarProperty Name="Device_UID" ColumnName="Device_UID" />
-                <ScalarProperty Name="FILE_ROOT" ColumnName="FILE_ROOT" />
-                <ScalarProperty Name="FILE_DIR" ColumnName="FILE_DIR" />
-                <ScalarProperty Name="FILE_FULLPATH" ColumnName="FILE_FULLPATH" />
-                <ScalarProperty Name="FILE_EXTENSION" ColumnName="FILE_EXTENSION" />
-                <ScalarProperty Name="FILESIZE" ColumnName="FILESIZE" />
-                <ScalarProperty Name="FILE_CREATE_TIME" ColumnName="FILE_CREATE_TIME" />
-                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
-                <ScalarProperty Name="FIELD1" ColumnName="FIELD1" />
-                <ScalarProperty Name="FIELD2" ColumnName="FIELD2" />
-                <ScalarProperty Name="FIELD3" ColumnName="FIELD3" />
-                <ScalarProperty Name="FIELD4" ColumnName="FIELD4" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="T_Video_Tags">
             <EntityTypeMapping TypeName="myVideoModel.T_Video_Tags">
               <MappingFragment StoreEntitySet="T_Video_Tags">
@@ -376,25 +355,75 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="T_WORKS">
-            <EntityTypeMapping TypeName="myVideoModel.T_WORKS">
-              <MappingFragment StoreEntitySet="T_WORKS">
+          <EntitySetMapping Name="T_DISK_INFO">
+            <EntityTypeMapping TypeName="myVideoModel.T_DISK_INFO">
+              <MappingFragment StoreEntitySet="T_DISK_INFO">
+                <ScalarProperty Name="FIELD4" ColumnName="FIELD4" />
+                <ScalarProperty Name="FIELD3" ColumnName="FIELD3" />
+                <ScalarProperty Name="FIELD2" ColumnName="FIELD2" />
+                <ScalarProperty Name="FIELD1" ColumnName="FIELD1" />
+                <ScalarProperty Name="IS_ONLINE" ColumnName="IS_ONLINE" />
+                <ScalarProperty Name="LOGICAL_PERCENT" ColumnName="LOGICAL_PERCENT" />
+                <ScalarProperty Name="LOGICAL_FREESPACE" ColumnName="LOGICAL_FREESPACE" />
+                <ScalarProperty Name="LOGICAL_USESPACE" ColumnName="LOGICAL_USESPACE" />
+                <ScalarProperty Name="LOGICAL_TOTALSIZE" ColumnName="LOGICAL_TOTALSIZE" />
+                <ScalarProperty Name="LOGICAL_NAME" ColumnName="LOGICAL_NAME" />
+                <ScalarProperty Name="PHYSCIAL_TOTALSIZE" ColumnName="PHYSCIAL_TOTALSIZE" />
+                <ScalarProperty Name="PHYSICAL_NAME" ColumnName="PHYSICAL_NAME" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="CREATETIME" ColumnName="CREATETIME" />
-                <ScalarProperty Name="TARGET_LOCATION" ColumnName="TARGET_LOCATION" />
-                <ScalarProperty Name="VIDEO_COUNT" ColumnName="VIDEO_COUNT" />
-                <ScalarProperty Name="TARGET_HD_SIZE" ColumnName="TARGET_HD_SIZE" />
-                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Video">
+            <EntityTypeMapping TypeName="myVideoModel.T_Video">
+              <MappingFragment StoreEntitySet="T_Video">
+                <ScalarProperty Name="FIELD4" ColumnName="FIELD4" />
+                <ScalarProperty Name="FIELD3" ColumnName="FIELD3" />
+                <ScalarProperty Name="FIELD2" ColumnName="FIELD2" />
+                <ScalarProperty Name="FIELD1" ColumnName="FIELD1" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+                <ScalarProperty Name="FILE_CREATE_TIME" ColumnName="FILE_CREATE_TIME" />
+                <ScalarProperty Name="FILESIZE" ColumnName="FILESIZE" />
+                <ScalarProperty Name="FILE_EXTENSION" ColumnName="FILE_EXTENSION" />
+                <ScalarProperty Name="FILE_FULLPATH" ColumnName="FILE_FULLPATH" />
+                <ScalarProperty Name="FILE_DIR" ColumnName="FILE_DIR" />
+                <ScalarProperty Name="FILE_ROOT" ColumnName="FILE_ROOT" />
+                <ScalarProperty Name="Device_UID" ColumnName="Device_UID" />
+                <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
+                <ScalarProperty Name="FILE_INDEX" ColumnName="FILE_INDEX" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="T_WORKS_SUB">
             <EntityTypeMapping TypeName="myVideoModel.T_WORKS_SUB">
               <MappingFragment StoreEntitySet="T_WORKS_SUB">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+                <ScalarProperty Name="FILESIZE" ColumnName="FILESIZE" />
+                <ScalarProperty Name="FILE_EXTENSION" ColumnName="FILE_EXTENSION" />
+                <ScalarProperty Name="FILE_FULLPATH" ColumnName="FILE_FULLPATH" />
+                <ScalarProperty Name="FILE_DIR" ColumnName="FILE_DIR" />
+                <ScalarProperty Name="FILE_ROOT" ColumnName="FILE_ROOT" />
+                <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
                 <ScalarProperty Name="ID_VIDEO" ColumnName="ID_VIDEO" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_WORKS">
+            <EntityTypeMapping TypeName="myVideoModel.T_WORKS">
+              <MappingFragment StoreEntitySet="T_WORKS">
+                <ScalarProperty Name="TARGET_FREE_SIZE" ColumnName="TARGET_FREE_SIZE" />
+                <ScalarProperty Name="COPY_COUNT" ColumnName="COPY_COUNT" />
+                <ScalarProperty Name="SOURCE_SIZE" ColumnName="SOURCE_SIZE" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="TARGET_HD_SIZE" ColumnName="TARGET_HD_SIZE" />
+                <ScalarProperty Name="VIDEO_COUNT" ColumnName="VIDEO_COUNT" />
+                <ScalarProperty Name="TARGET_LOCATION" ColumnName="TARGET_LOCATION" />
+                <ScalarProperty Name="CREATETIME" ColumnName="CREATETIME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

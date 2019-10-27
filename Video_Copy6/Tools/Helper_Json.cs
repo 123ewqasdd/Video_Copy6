@@ -13,6 +13,11 @@ namespace Video_Copy6.Tools
     class Helper_Json
     {
         public static string DateTimeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss";
+        /// <summary>
+        /// 将对象转换json字符串
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
         public static string Encode(object o)
         {
             if (o == null || o.ToString() == "null")
@@ -46,7 +51,11 @@ namespace Video_Copy6.Tools
             dt.DateTimeFormat = DateTimeFormat;
             return JsonConvert.SerializeObject(o, dt);
         }
-
+        /// <summary>
+        /// 将json字符串转换为对象
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
         public static object Decode(string json)
         {
             if (String.IsNullOrEmpty(json)) return "";
@@ -58,6 +67,12 @@ namespace Video_Copy6.Tools
             object v = toObject(o);
             return v;
         }
+        /// <summary>
+        /// 将json字符串转换为指定对象
+        /// </summary>
+        /// <param name="json"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static object Decode(string json, Type type)
         {
             return JsonConvert.DeserializeObject(json, type);

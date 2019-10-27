@@ -13,9 +13,11 @@ namespace Video_Copy6.Classes
     {
         public string fileIndex { get; set; }
         public string fileRoot { get; set; }
+        public string fileDir { get; set; }
         public string fileName { get; set; }
         public string fileFullPath { get; set; }
         public string fileExtension { get; set; }
-        public string fileSize { get; set; }
+        public double fileSize { get; set; }
+        public string fileRootID { get; set; }
     }
 }

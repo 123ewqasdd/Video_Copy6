@@ -22,7 +22,7 @@ namespace Video_Copy6
         public Nullable<double> LOGICAL_USESPACE { get; set; }
         public Nullable<double> LOGICAL_FREESPACE { get; set; }
         public Nullable<double> LOGICAL_PERCENT { get; set; }
-        public bool IS_ONLINE { get; set; }
+        public long IS_ONLINE { get; set; }
         public string FIELD1 { get; set; }
         public string FIELD2 { get; set; }
         public string FIELD3 { get; set; }

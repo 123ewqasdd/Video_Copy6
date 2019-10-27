@@ -15,14 +15,14 @@ namespace Video_Copy6
     public partial class T_Video
     {
         public long ID { get; set; }
-        public Nullable<int> FILE_INDEX { get; set; }
+        public string FILE_INDEX { get; set; }
         public string FILE_NAME { get; set; }
         public string Device_UID { get; set; }
         public string FILE_ROOT { get; set; }
         public string FILE_DIR { get; set; }
         public string FILE_FULLPATH { get; set; }
         public string FILE_EXTENSION { get; set; }
-        public Nullable<int> FILESIZE { get; set; }
+        public Nullable<double> FILESIZE { get; set; }
         public Nullable<System.DateTime> FILE_CREATE_TIME { get; set; }
         public Nullable<System.DateTime> CREATE_TIME { get; set; }
         public string FIELD1 { get; set; }

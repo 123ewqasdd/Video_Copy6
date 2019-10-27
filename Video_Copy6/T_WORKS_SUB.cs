@@ -17,5 +17,12 @@ namespace Video_Copy6
         public long ID { get; set; }
         public long PID { get; set; }
         public Nullable<long> ID_VIDEO { get; set; }
+        public string FILE_NAME { get; set; }
+        public string FILE_ROOT { get; set; }
+        public string FILE_DIR { get; set; }
+        public string FILE_FULLPATH { get; set; }
+        public string FILE_EXTENSION { get; set; }
+        public Nullable<double> FILESIZE { get; set; }
+        public Nullable<System.DateTime> CREATE_TIME { get; set; }
     }
 }

@@ -21,5 +21,8 @@ namespace Video_Copy6
         public Nullable<long> VIDEO_COUNT { get; set; }
         public Nullable<double> TARGET_HD_SIZE { get; set; }
         public string MEMO { get; set; }
+        public Nullable<double> SOURCE_SIZE { get; set; }
+        public Nullable<long> COPY_COUNT { get; set; }
+        public Nullable<double> TARGET_FREE_SIZE { get; set; }
     }
 }

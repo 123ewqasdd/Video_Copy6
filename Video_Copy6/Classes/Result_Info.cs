@@ -22,7 +22,7 @@ namespace Video_Copy6.Classes
         /// <summary>
         /// 执行结果代码
         /// </summary>
-        public int code { get; set; }
+        public double code { get; set; }
         /// <summary>
         /// 执行结果数据
         /// </summary>

@@ -28,12 +28,12 @@ namespace Video_Copy6
         public virtual DbSet<T_CONFIG> T_CONFIG { get; set; }
         public virtual DbSet<T_COPYACTION> T_COPYACTION { get; set; }
         public virtual DbSet<T_COPYACTION_SUB> T_COPYACTION_SUB { get; set; }
-        public virtual DbSet<T_DISK_INFO> T_DISK_INFO { get; set; }
         public virtual DbSet<T_Logs> T_Logs { get; set; }
         public virtual DbSet<T_Tages> T_Tages { get; set; }
-        public virtual DbSet<T_Video> T_Video { get; set; }
         public virtual DbSet<T_Video_Tags> T_Video_Tags { get; set; }
-        public virtual DbSet<T_WORKS> T_WORKS { get; set; }
+        public virtual DbSet<T_DISK_INFO> T_DISK_INFO { get; set; }
+        public virtual DbSet<T_Video> T_Video { get; set; }
         public virtual DbSet<T_WORKS_SUB> T_WORKS_SUB { get; set; }
+        public virtual DbSet<T_WORKS> T_WORKS { get; set; }
     }
 }
