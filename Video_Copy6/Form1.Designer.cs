@@ -35,6 +35,7 @@
             this.lb_disk_Info = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.b_Sender = new System.Windows.Forms.Button();
+            this.btn_ScanDisk = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.C_Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.C_LOGICAL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,39 +45,44 @@
             this.C_IS_ONLINE = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.C_PHYSICAL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tv_videos = new System.Windows.Forms.TreeView();
+            this.lb_video_order_found = new System.Windows.Forms.Label();
+            this.btn_Import_Excel = new System.Windows.Forms.Button();
+            this.btn_Import_txt = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lb_video_info = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btn_ScanDisk = new System.Windows.Forms.Button();
-            this.tb_file_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lb_video_info = new System.Windows.Forms.Label();
             this.btn_Search = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tb_file_name = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lb_Task_count = new System.Windows.Forms.Label();
+            this.dgv_Task = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lb_Total_Size = new System.Windows.Forms.Label();
             this.btn_Start = new System.Windows.Forms.Button();
             this.btn_refresh_disk = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.rb_single = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.lb_Task_Info = new System.Windows.Forms.Label();
-            this.rb_dir = new System.Windows.Forms.RadioButton();
             this.lb_Files = new System.Windows.Forms.ListBox();
             this.cb_disk = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_ReceiveMessage = new System.Windows.Forms.RichTextBox();
-            this.dgv_Task = new System.Windows.Forms.DataGridView();
-            this.lb_Task_count = new System.Windows.Forms.Label();
-            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Add = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -91,12 +97,14 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Task)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -139,6 +147,7 @@
             this.groupBox2.Controls.Add(this.lb_disk_Info);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.b_Sender);
+            this.groupBox2.Controls.Add(this.btn_ScanDisk);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
@@ -151,7 +160,7 @@
             // lb_disk_Info
             // 
             this.lb_disk_Info.AutoSize = true;
-            this.lb_disk_Info.Location = new System.Drawing.Point(277, 3);
+            this.lb_disk_Info.Location = new System.Drawing.Point(325, 3);
             this.lb_disk_Info.Name = "lb_disk_Info";
             this.lb_disk_Info.Size = new System.Drawing.Size(107, 12);
             this.lb_disk_Info.TabIndex = 12;
@@ -160,7 +169,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(144, -1);
+            this.button2.Location = new System.Drawing.Point(92, 0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(50, 20);
             this.button2.TabIndex = 12;
@@ -171,13 +180,23 @@
             // b_Sender
             // 
             this.b_Sender.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.b_Sender.Location = new System.Drawing.Point(206, -1);
+            this.b_Sender.Location = new System.Drawing.Point(154, 0);
             this.b_Sender.Name = "b_Sender";
             this.b_Sender.Size = new System.Drawing.Size(50, 20);
             this.b_Sender.TabIndex = 7;
             this.b_Sender.Text = "刷新";
             this.b_Sender.UseVisualStyleBackColor = true;
             this.b_Sender.Click += new System.EventHandler(this.b_Sender_Click);
+            // 
+            // btn_ScanDisk
+            // 
+            this.btn_ScanDisk.Location = new System.Drawing.Point(245, 0);
+            this.btn_ScanDisk.Name = "btn_ScanDisk";
+            this.btn_ScanDisk.Size = new System.Drawing.Size(63, 20);
+            this.btn_ScanDisk.TabIndex = 13;
+            this.btn_ScanDisk.Text = "扫描硬盘";
+            this.btn_ScanDisk.UseVisualStyleBackColor = true;
+            this.btn_ScanDisk.Click += new System.EventHandler(this.button3_Click);
             // 
             // dataGridView1
             // 
@@ -262,7 +281,7 @@
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.groupBox3);
+            this.splitContainer3.Panel1.Controls.Add(this.tabControl1);
             // 
             // splitContainer3.Panel2
             // 
@@ -271,22 +290,87 @@
             this.splitContainer3.SplitterDistance = 556;
             this.splitContainer3.TabIndex = 13;
             // 
-            // groupBox3
+            // tabControl1
             // 
-            this.groupBox3.Controls.Add(this.dataGridView2);
-            this.groupBox3.Controls.Add(this.lb_video_info);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.btn_ScanDisk);
-            this.groupBox3.Controls.Add(this.tb_file_name);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.btn_Search);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(556, 520);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "查询信息";
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(556, 520);
+            this.tabControl1.TabIndex = 14;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.tv_videos);
+            this.tabPage1.Controls.Add(this.lb_video_order_found);
+            this.tabPage1.Controls.Add(this.btn_Import_Excel);
+            this.tabPage1.Controls.Add(this.btn_Import_txt);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(548, 494);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "任务编辑";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tv_videos
+            // 
+            this.tv_videos.ItemHeight = 18;
+            this.tv_videos.Location = new System.Drawing.Point(6, 36);
+            this.tv_videos.Name = "tv_videos";
+            this.tv_videos.Size = new System.Drawing.Size(536, 455);
+            this.tv_videos.TabIndex = 14;
+            this.tv_videos.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tv_videos_NodeMouseDoubleClick);
+            // 
+            // lb_video_order_found
+            // 
+            this.lb_video_order_found.AutoSize = true;
+            this.lb_video_order_found.Location = new System.Drawing.Point(419, 19);
+            this.lb_video_order_found.Name = "lb_video_order_found";
+            this.lb_video_order_found.Size = new System.Drawing.Size(53, 12);
+            this.lb_video_order_found.TabIndex = 13;
+            this.lb_video_order_found.Text = "数量：0 ";
+            // 
+            // btn_Import_Excel
+            // 
+            this.btn_Import_Excel.Enabled = false;
+            this.btn_Import_Excel.Location = new System.Drawing.Point(133, 4);
+            this.btn_Import_Excel.Name = "btn_Import_Excel";
+            this.btn_Import_Excel.Size = new System.Drawing.Size(75, 23);
+            this.btn_Import_Excel.TabIndex = 1;
+            this.btn_Import_Excel.Text = "导入Excel";
+            this.btn_Import_Excel.UseVisualStyleBackColor = true;
+            this.btn_Import_Excel.Click += new System.EventHandler(this.btn_Import_Excel_Click);
+            // 
+            // btn_Import_txt
+            // 
+            this.btn_Import_txt.Location = new System.Drawing.Point(36, 4);
+            this.btn_Import_txt.Name = "btn_Import_txt";
+            this.btn_Import_txt.Size = new System.Drawing.Size(75, 23);
+            this.btn_Import_txt.TabIndex = 0;
+            this.btn_Import_txt.Text = "导入文本";
+            this.btn_Import_txt.UseVisualStyleBackColor = true;
+            this.btn_Import_txt.Click += new System.EventHandler(this.btn_Import_txt_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.btn_Add);
+            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.lb_video_info);
+            this.tabPage2.Controls.Add(this.btn_Search);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.tb_file_name);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(548, 494);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "影片库";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
@@ -299,10 +383,10 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn5});
-            this.dataGridView2.Location = new System.Drawing.Point(3, 70);
+            this.dataGridView2.Location = new System.Drawing.Point(7, 53);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(550, 447);
+            this.dataGridView2.Size = new System.Drawing.Size(541, 438);
             this.dataGridView2.TabIndex = 16;
             // 
             // dataGridViewCheckBoxColumn1
@@ -336,60 +420,50 @@
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Width = 400;
             // 
-            // lb_video_info
-            // 
-            this.lb_video_info.AutoSize = true;
-            this.lb_video_info.Location = new System.Drawing.Point(441, 53);
-            this.lb_video_info.Name = "lb_video_info";
-            this.lb_video_info.Size = new System.Drawing.Size(47, 12);
-            this.lb_video_info.TabIndex = 15;
-            this.lb_video_info.Text = "数量：0";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(88, 53);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(329, 12);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "模糊查询所有影片库中满足条件的前20部电影，条件不能为空";
-            // 
-            // btn_ScanDisk
-            // 
-            this.btn_ScanDisk.Location = new System.Drawing.Point(11, 18);
-            this.btn_ScanDisk.Name = "btn_ScanDisk";
-            this.btn_ScanDisk.Size = new System.Drawing.Size(87, 26);
-            this.btn_ScanDisk.TabIndex = 13;
-            this.btn_ScanDisk.Text = "<- 扫描硬盘";
-            this.btn_ScanDisk.UseVisualStyleBackColor = true;
-            this.btn_ScanDisk.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // tb_file_name
-            // 
-            this.tb_file_name.Location = new System.Drawing.Point(151, 21);
-            this.tb_file_name.Name = "tb_file_name";
-            this.tb_file_name.Size = new System.Drawing.Size(284, 21);
-            this.tb_file_name.TabIndex = 12;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(104, 25);
+            this.label1.Location = new System.Drawing.Point(35, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 11;
             this.label1.Text = "影名：";
             // 
+            // lb_video_info
+            // 
+            this.lb_video_info.AutoSize = true;
+            this.lb_video_info.Location = new System.Drawing.Point(459, 36);
+            this.lb_video_info.Name = "lb_video_info";
+            this.lb_video_info.Size = new System.Drawing.Size(47, 12);
+            this.lb_video_info.TabIndex = 15;
+            this.lb_video_info.Text = "数量：0";
+            // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(441, 18);
+            this.btn_Search.Location = new System.Drawing.Point(401, 1);
             this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(87, 26);
+            this.btn_Search.Size = new System.Drawing.Size(71, 24);
             this.btn_Search.TabIndex = 10;
             this.btn_Search.Text = "查询";
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(80, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(245, 12);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "查询所有影片库中前20部电影，条件不能为空";
+            // 
+            // tb_file_name
+            // 
+            this.tb_file_name.Location = new System.Drawing.Point(82, 3);
+            this.tb_file_name.Name = "tb_file_name";
+            this.tb_file_name.Size = new System.Drawing.Size(313, 21);
+            this.tb_file_name.TabIndex = 12;
             // 
             // groupBox4
             // 
@@ -413,10 +487,8 @@
             this.groupBox6.Controls.Add(this.btn_Start);
             this.groupBox6.Controls.Add(this.btn_refresh_disk);
             this.groupBox6.Controls.Add(this.label4);
-            this.groupBox6.Controls.Add(this.rb_single);
             this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Controls.Add(this.lb_Task_Info);
-            this.groupBox6.Controls.Add(this.rb_dir);
             this.groupBox6.Controls.Add(this.lb_Files);
             this.groupBox6.Controls.Add(this.cb_disk);
             this.groupBox6.Controls.Add(this.button4);
@@ -427,135 +499,15 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "任务";
             // 
-            // lb_Total_Size
+            // lb_Task_count
             // 
-            this.lb_Total_Size.AutoSize = true;
-            this.lb_Total_Size.Location = new System.Drawing.Point(189, 36);
-            this.lb_Total_Size.Name = "lb_Total_Size";
-            this.lb_Total_Size.Size = new System.Drawing.Size(47, 12);
-            this.lb_Total_Size.TabIndex = 22;
-            this.lb_Total_Size.Text = "共：0GB";
-            // 
-            // btn_Start
-            // 
-            this.btn_Start.Location = new System.Drawing.Point(366, 107);
-            this.btn_Start.Name = "btn_Start";
-            this.btn_Start.Size = new System.Drawing.Size(87, 34);
-            this.btn_Start.TabIndex = 15;
-            this.btn_Start.Text = "开始任务";
-            this.btn_Start.UseVisualStyleBackColor = true;
-            this.btn_Start.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // btn_refresh_disk
-            // 
-            this.btn_refresh_disk.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_refresh_disk.Location = new System.Drawing.Point(450, 52);
-            this.btn_refresh_disk.Name = "btn_refresh_disk";
-            this.btn_refresh_disk.Size = new System.Drawing.Size(50, 20);
-            this.btn_refresh_disk.TabIndex = 19;
-            this.btn_refresh_disk.Text = "刷新";
-            this.btn_refresh_disk.UseVisualStyleBackColor = true;
-            this.btn_refresh_disk.Click += new System.EventHandler(this.btn_refresh_disk_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(159, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 12);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "查找失败请重新扫描硬盘";
-            // 
-            // rb_single
-            // 
-            this.rb_single.AutoSize = true;
-            this.rb_single.Checked = true;
-            this.rb_single.Location = new System.Drawing.Point(317, 20);
-            this.rb_single.Name = "rb_single";
-            this.rb_single.Size = new System.Drawing.Size(71, 16);
-            this.rb_single.TabIndex = 13;
-            this.rb_single.TabStop = true;
-            this.rb_single.Text = "文件拷贝";
-            this.rb_single.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "目标硬盘：";
-            // 
-            // lb_Task_Info
-            // 
-            this.lb_Task_Info.AutoSize = true;
-            this.lb_Task_Info.Location = new System.Drawing.Point(43, 36);
-            this.lb_Task_Info.Name = "lb_Task_Info";
-            this.lb_Task_Info.Size = new System.Drawing.Size(101, 12);
-            this.lb_Task_Info.TabIndex = 16;
-            this.lb_Task_Info.Text = "成功：0，失败：0";
-            // 
-            // rb_dir
-            // 
-            this.rb_dir.AutoSize = true;
-            this.rb_dir.Location = new System.Drawing.Point(417, 20);
-            this.rb_dir.Name = "rb_dir";
-            this.rb_dir.Size = new System.Drawing.Size(71, 16);
-            this.rb_dir.TabIndex = 14;
-            this.rb_dir.Text = "目录拷贝";
-            this.rb_dir.UseVisualStyleBackColor = true;
-            // 
-            // lb_Files
-            // 
-            this.lb_Files.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lb_Files.FormattingEnabled = true;
-            this.lb_Files.ItemHeight = 12;
-            this.lb_Files.Location = new System.Drawing.Point(6, 53);
-            this.lb_Files.Name = "lb_Files";
-            this.lb_Files.Size = new System.Drawing.Size(302, 436);
-            this.lb_Files.TabIndex = 12;
-            // 
-            // cb_disk
-            // 
-            this.cb_disk.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_disk.FormattingEnabled = true;
-            this.cb_disk.Location = new System.Drawing.Point(317, 81);
-            this.cb_disk.Name = "cb_disk";
-            this.cb_disk.Size = new System.Drawing.Size(183, 20);
-            this.cb_disk.TabIndex = 17;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(57, 8);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 26);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "导入任务";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.tb_ReceiveMessage);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1561, 259);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "日志";
-            // 
-            // tb_ReceiveMessage
-            // 
-            this.tb_ReceiveMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_ReceiveMessage.Location = new System.Drawing.Point(3, 17);
-            this.tb_ReceiveMessage.Name = "tb_ReceiveMessage";
-            this.tb_ReceiveMessage.Size = new System.Drawing.Size(1555, 239);
-            this.tb_ReceiveMessage.TabIndex = 3;
-            this.tb_ReceiveMessage.Text = "";
+            this.lb_Task_count.AutoSize = true;
+            this.lb_Task_count.Location = new System.Drawing.Point(471, 95);
+            this.lb_Task_count.Name = "lb_Task_count";
+            this.lb_Task_count.Size = new System.Drawing.Size(47, 12);
+            this.lb_Task_count.TabIndex = 24;
+            this.lb_Task_count.Tag = "0";
+            this.lb_Task_count.Text = "数量：0";
             // 
             // dgv_Task
             // 
@@ -568,21 +520,11 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn6});
-            this.dgv_Task.Location = new System.Drawing.Point(314, 147);
+            this.dgv_Task.Location = new System.Drawing.Point(314, 116);
             this.dgv_Task.Name = "dgv_Task";
             this.dgv_Task.RowTemplate.Height = 23;
-            this.dgv_Task.Size = new System.Drawing.Size(223, 342);
+            this.dgv_Task.Size = new System.Drawing.Size(223, 373);
             this.dgv_Task.TabIndex = 23;
-            // 
-            // lb_Task_count
-            // 
-            this.lb_Task_count.AutoSize = true;
-            this.lb_Task_count.Location = new System.Drawing.Point(471, 132);
-            this.lb_Task_count.Name = "lb_Task_count";
-            this.lb_Task_count.Size = new System.Drawing.Size(47, 12);
-            this.lb_Task_count.TabIndex = 24;
-            this.lb_Task_count.Tag = "0";
-            this.lb_Task_count.Text = "数量：0";
             // 
             // dataGridViewCheckBoxColumn2
             // 
@@ -617,6 +559,134 @@
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 60;
             // 
+            // lb_Total_Size
+            // 
+            this.lb_Total_Size.AutoSize = true;
+            this.lb_Total_Size.Location = new System.Drawing.Point(189, 36);
+            this.lb_Total_Size.Name = "lb_Total_Size";
+            this.lb_Total_Size.Size = new System.Drawing.Size(47, 12);
+            this.lb_Total_Size.TabIndex = 22;
+            this.lb_Total_Size.Text = "共：0GB";
+            // 
+            // btn_Start
+            // 
+            this.btn_Start.Location = new System.Drawing.Point(366, 76);
+            this.btn_Start.Name = "btn_Start";
+            this.btn_Start.Size = new System.Drawing.Size(87, 34);
+            this.btn_Start.TabIndex = 15;
+            this.btn_Start.Text = "开始任务";
+            this.btn_Start.UseVisualStyleBackColor = true;
+            this.btn_Start.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // btn_refresh_disk
+            // 
+            this.btn_refresh_disk.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_refresh_disk.Location = new System.Drawing.Point(450, 13);
+            this.btn_refresh_disk.Name = "btn_refresh_disk";
+            this.btn_refresh_disk.Size = new System.Drawing.Size(50, 20);
+            this.btn_refresh_disk.TabIndex = 19;
+            this.btn_refresh_disk.Text = "刷新";
+            this.btn_refresh_disk.UseVisualStyleBackColor = true;
+            this.btn_refresh_disk.Click += new System.EventHandler(this.btn_refresh_disk_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(159, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(137, 12);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "查找失败请重新扫描硬盘";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(315, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "目标硬盘：";
+            // 
+            // lb_Task_Info
+            // 
+            this.lb_Task_Info.AutoSize = true;
+            this.lb_Task_Info.Location = new System.Drawing.Point(43, 36);
+            this.lb_Task_Info.Name = "lb_Task_Info";
+            this.lb_Task_Info.Size = new System.Drawing.Size(47, 12);
+            this.lb_Task_Info.TabIndex = 16;
+            this.lb_Task_Info.Text = "成功：0";
+            // 
+            // lb_Files
+            // 
+            this.lb_Files.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lb_Files.FormattingEnabled = true;
+            this.lb_Files.ItemHeight = 12;
+            this.lb_Files.Location = new System.Drawing.Point(6, 53);
+            this.lb_Files.Name = "lb_Files";
+            this.lb_Files.Size = new System.Drawing.Size(302, 436);
+            this.lb_Files.TabIndex = 12;
+            // 
+            // cb_disk
+            // 
+            this.cb_disk.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_disk.FormattingEnabled = true;
+            this.cb_disk.Location = new System.Drawing.Point(317, 42);
+            this.cb_disk.Name = "cb_disk";
+            this.cb_disk.Size = new System.Drawing.Size(220, 20);
+            this.cb_disk.TabIndex = 17;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(57, 8);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(87, 26);
+            this.button4.TabIndex = 11;
+            this.button4.Text = "导入任务";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tb_ReceiveMessage);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1561, 259);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "日志";
+            // 
+            // tb_ReceiveMessage
+            // 
+            this.tb_ReceiveMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_ReceiveMessage.Location = new System.Drawing.Point(3, 17);
+            this.tb_ReceiveMessage.Name = "tb_ReceiveMessage";
+            this.tb_ReceiveMessage.Size = new System.Drawing.Size(1555, 239);
+            this.tb_ReceiveMessage.TabIndex = 3;
+            this.tb_ReceiveMessage.Text = "";
+            // 
+            // btn_Add
+            // 
+            this.btn_Add.Location = new System.Drawing.Point(474, 1);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(71, 24);
+            this.btn_Add.TabIndex = 17;
+            this.btn_Add.Text = "添加任务";
+            this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(318, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "——>";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -642,14 +712,17 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Task)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -673,7 +746,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn C_PHYSICAL_NAME;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btn_ScanDisk;
         private System.Windows.Forms.TextBox tb_file_name;
         private System.Windows.Forms.Label label1;
@@ -690,8 +762,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label lb_Task_Info;
         private System.Windows.Forms.Button btn_Start;
-        private System.Windows.Forms.RadioButton rb_dir;
-        private System.Windows.Forms.RadioButton rb_single;
         private System.Windows.Forms.ListBox lb_Files;
         private System.Windows.Forms.Button btn_refresh_disk;
         private System.Windows.Forms.Label label3;
@@ -704,6 +774,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label lb_video_order_found;
+        private System.Windows.Forms.Button btn_Import_Excel;
+        private System.Windows.Forms.Button btn_Import_txt;
+        private System.Windows.Forms.TreeView tv_videos;
+        private System.Windows.Forms.Button btn_Add;
+        private System.Windows.Forms.Button button1;
     }
 }
 

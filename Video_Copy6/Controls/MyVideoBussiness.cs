@@ -54,14 +54,49 @@ namespace Video_Copy6.Controls
             }
         }
 
-        public static List<T_Video> GetList_Video_Info_Like(string name)
+        public static List<T_CONFIG> GetList_Config(string key)
         {
             using (var ctx = new myVideoEntities())
             {
                 try
                 {
                     //Querying with LINQ to Entities
-                    var L2EQuery = ctx.T_Video.Where(s => s.FILE_NAME.StartsWith(name)).Take(20);
+                    var L2EQuery = ctx.T_CONFIG.Where(s => s.KEY == (key));
+                    var vs = L2EQuery.ToList<T_CONFIG>();
+                    return vs;
+
+                }
+                catch (Exception ex)
+                {
+                    Helper_log.Write_Error(ex.InnerException.Message + ";" + ex.Message);
+                    return null;
+                }
+            }
+        }
+
+        public static List<T_Video> GetList_Video_Info_Like(string name,int top_num = 20)
+        {
+            //using (var ctx = new myVideoEntities())
+            //{
+            //    try
+            //    {                    
+            //        //Querying with LINQ to Entities
+            //        var L2EQuery = ctx.T_Video.Where(s => s.FILE_NAME.Contains(name)).Take(top_num);
+            //        var vs = L2EQuery.ToList<T_Video>();
+            //        return vs;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Helper_log.Write_Error(ex.InnerException.Message + ";" + ex.Message);
+            //        return new List<T_Video>();
+            //    }
+
+            //}
+            using (var ctx = new myVideoEntities())
+            {
+                try
+                {
+                    var L2EQuery = ctx.T_Video.SqlQuery("select * from T_Video where FILE_NAME like '%" + name + "%' limit 0," + top_num);
                     var vs = L2EQuery.ToList<T_Video>();
                     return vs;
                 }
@@ -174,6 +209,7 @@ namespace Video_Copy6.Controls
                     w.TARGET_FREE_SIZE = task.target_free_size;
                     w.VIDEO_COUNT = vs.Count;
                     w.COPY_COUNT = 0;
+                    w.MEMO = task.copy_type;
                     ctx.T_WORKS.Add(w);
                     int row = ctx.SaveChanges();
                     if (row > 0)
@@ -246,11 +282,12 @@ namespace Video_Copy6.Controls
         /// <returns></returns>
         public static int Update_Disk_Info(List<Disk_Info> ds)
         {
+            
             using (var ctx = new myVideoEntities())
             {
-
+                
                 ctx.Database.ExecuteSqlCommand("update T_DISK_INFO set IS_ONLINE = 0");
-
+               
                 try
                 {
                     foreach (var d in ds)

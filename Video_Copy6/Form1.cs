@@ -30,11 +30,13 @@ namespace Video_Copy6
         string str_r_rec_disk_info = "";
         string str_search = "";
         string str_disk_format = "在线：{0} ，离线：{1}";
-        string str_match_file = "成功：{0}，失败：{1}";
+        string str_match_file = "成功：{0}";
         string str_match_file_size = "共：{0} GB";
         string str_video_format = "数量：{0}";
         string str_Scan_dir = "";
         private bool m_bolHighlight = true;
+        private OrderControler order_controler;
+
 
         //声明一个委托
         public delegate void SetTextBoxValue(Control c, string value);
@@ -172,6 +174,7 @@ namespace Video_Copy6
             SetDatagridview_Style(dataGridView1);
             SetDatagridview_Style(dataGridView2);
             SetDatagridview_Style(dgv_Task);
+            order_controler = new OrderControler();
             Refresh_DataGridView();
             h_ini = new Helper_INI(str_ini);
 
@@ -192,10 +195,13 @@ namespace Video_Copy6
 
             h_redis.RedisSubMessageEvent += H_redis_RedisSubMessageEvent;
             h_redis.Use(r_DB).RedisSub(str_r_rec);
-            if (str_copy_dir == "1")
-                rb_dir.Checked = true;
-            else
-                rb_single.Checked = true;
+            //功能被删除
+            //if (str_copy_dir == "1")
+            //    rb_dir.Checked = true;
+            //else
+            //    rb_single.Checked = true;
+
+
         }
 
 
@@ -253,9 +259,9 @@ namespace Video_Copy6
 
             if (r.type > 0)
             {
+                Helper_log.Write_log(str);
                 if (r.type == 1)
-                {
-                    Helper_log.Write_log(str);
+                {                    
                     if (r.code > 0)
                     {
                         List<Disk_Info> ds = (List<Disk_Info>)Helper_Json.Decode(r.msg, typeof(List<Disk_Info>));
@@ -454,7 +460,8 @@ namespace Video_Copy6
                         c.msg += arr_disklist[i] + "\\,.,";
                     }
                 }
-               
+                //c.msg = @"D:\chao\工作\电影程序\Data";
+
                 c.msg2 = str_search;
                 c.tag = string.Join(",.,", arr_disk_id_list); 
                 string str_c = Helper_Json.Encode(c);
@@ -475,7 +482,7 @@ namespace Video_Copy6
             {
                 if (ds[i].IS_ONLINE == 1)
                 {
-                    str_display = string.Format(str_format, ds[i].LOGICAL_NAME, Math.Round(ds[i].LOGICAL_FREESPACE.Value, 2), Math.Round(ds[i].LOGICAL_TOTALSIZE.Value, 2));
+                    str_display = string.Format(str_format, ds[i].FIELD1 +"|" + ds[i].LOGICAL_NAME, Math.Round(ds[i].LOGICAL_FREESPACE.Value, 2), Math.Round(ds[i].LOGICAL_TOTALSIZE.Value, 2));
                     cb_disk.Items.Add(str_display);                   
                 }
             }
@@ -493,53 +500,69 @@ namespace Video_Copy6
                 if (ofd.ShowDialog() == DialogResult.OK)  //如果点击的是打开文件
                 {
                     lb_Files.Items.Clear();
-                    lb_Files.Tag = null;                
+                    lb_Files.Tag = null;
                     try
                     {
-                        int i_success = 0, i_fail = 0;
-                        string str_temp = "";
+                        //int i_success = 0, i_fail = 0;
+                        //string str_temp = "";
+                        //List<T_Video> lts = new List<T_Video>();
+                        //string[] arr_files = Helper_Txt.ReadAllLines(ofd.FileName, Encoding.UTF8);  //获取全路径文件名
+
+                        //for (int i = 0; i < arr_files.Length; i++)
+                        //{
+                        //    T_Video v = MyVideoBussiness.GetList_Video_Info(arr_files[i]);
+                        //    if (v == null)
+                        //    {
+                        //        i_fail++;
+                        //        str_temp = "NO  NULL  " + arr_files[i];
+
+                        //    }
+                        //    else
+                        //    {
+                        //        i_success++;
+                        //        str_temp = "OK  "+ v.FILE_ROOT + "  " + arr_files[i];
+                        //        lts.Add(v);
+                        //    }
+                        //    lb_Files.Items.Add(str_temp);
+                        //}
+                        //SetMyTextBoxValue(lb_Task_Info, string.Format(str_match_file, i_success, i_fail));
+                        //lb_Files.Tag = lts;
+
+                        //if (lts.Count > 0)
+                        //{
+                        //    Command_info c = new Command_info();
+                        //    c.type = 3;
+                        //    if (rb_dir.Checked)
+                        //    {
+                        //        c.msg = string.Join(",.,", lts.Select(s => s.FILE_DIR).Distinct());
+                        //        c.msg2 = "1";
+                        //    }
+                        //    else
+                        //    {
+                        //        c.msg = string.Join(",.,", lts.Select(s => s.FILE_FULLPATH));
+                        //        c.msg2 = "0";
+                        //    }                            
+                        //    string str_c = Helper_Json.Encode(c);
+                        //    SetrichTextBox("刷新所有硬盘信息.....");
+                        //    long r_l = h_redis.RedisPub(str_r_rep, str_c);
+                        //    Helper_log.Write_log(str_r_rep + ":" + str_c);
+                        //}
+
                         List<T_Video> lts = new List<T_Video>();
                         string[] arr_files = Helper_Txt.ReadAllLines(ofd.FileName, Encoding.UTF8);  //获取全路径文件名
-                        
                         for (int i = 0; i < arr_files.Length; i++)
                         {
                             T_Video v = MyVideoBussiness.GetList_Video_Info(arr_files[i]);
-                            if (v == null)
+                            if (v != null)
                             {
-                                i_fail++;
-                                str_temp = "NO  NULL  " + arr_files[i];
-
-                            }
-                            else
-                            {
-                                i_success++;
-                                str_temp = "OK  "+ v.FILE_ROOT + "  " + arr_files[i];
                                 lts.Add(v);
                             }
-                            lb_Files.Items.Add(str_temp);
-                        }
-                        SetMyTextBoxValue(lb_Task_Info, string.Format(str_match_file, i_success, i_fail));
-                        lb_Files.Tag = lts;
-
-                        if (lts.Count > 0)
-                        {
-                            Command_info c = new Command_info();
-                            c.type = 3;
-                            if (rb_dir.Checked)
-                            {
-                                c.msg = string.Join(",.,", lts.Select(s => s.FILE_DIR).Distinct());
-                                c.msg2 = "1";
-                            }
                             else
                             {
-                                c.msg = string.Join(",.,", lts.Select(s => s.FILE_FULLPATH));
-                                c.msg2 = "0";
-                            }                            
-                            string str_c = Helper_Json.Encode(c);
-                            SetrichTextBox("刷新所有硬盘信息.....");
-                            long r_l = h_redis.RedisPub(str_r_rep, str_c);
-                            Helper_log.Write_log(str_r_rep + ":" + str_c);
+                                lb_Files.Items.Add("NO  " + arr_files[i]);
+                            }
                         }
+                        Add_Task_Node(lts);
                     }
                     catch (Exception ex)
                     {
@@ -549,7 +572,38 @@ namespace Video_Copy6
                     
                 }
             }
+        }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            List<T_Video> lts = new List<T_Video>();
+            foreach (TreeNode tn in tv_videos.Nodes)
+            {
+                foreach (TreeNode sub_tn in tn.Nodes)
+                {
+                    lts.Add((T_Video)sub_tn.Tag);
+                }
+            }
+            Add_Task_Node(lts);
+        }
+
+        private void Add_Task_Node(List<T_Video> vs)
+        {
+            int i_success = 0;
+            double d_total_size = 0;
+            string str_temp = "";
+            foreach (var v in vs)
+            {
+                i_success++;
+                str_temp = "OK  " + v.FILE_ROOT + "  " + v.FILE_NAME;
+                d_total_size += (v.FILESIZE.HasValue ? v.FILESIZE.Value : 0);
+                lb_Files.Items.Add(str_temp);
+            }
+            SetMyTextBoxValue(lb_Task_Info, string.Format(str_match_file, i_success));
+            lb_Files.Tag = vs;
+            string str_total_size = string.Format(str_match_file_size, Math.Round(d_total_size, 4));
+            SetMyTextBoxValue(lb_Total_Size, str_total_size);
+            lb_Total_Size.Tag = d_total_size;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -564,12 +618,20 @@ namespace Video_Copy6
                     d_source_size = Math.Round((double)lb_Total_Size.Tag, 4);
 
                 Task_Info ti = new Task_Info();
-                ti.id = Guid.NewGuid().ToString();
-                ti.arr_source = lts.Select(s => s.FILE_FULLPATH).ToArray();
-                if (rb_dir.Checked)
-                    ti.copy_type = "1";
-                else
-                    ti.copy_type = "0";
+                ti.id = Guid.NewGuid().ToString();             
+                List<string> arr_file_path = new List<string>();
+                List<string> arr_copy_type = new List<string>();
+                foreach (var v in lts)
+                {
+                    arr_file_path.Add(v.FILE_FULLPATH);
+                    if (v.FILE_INDEX == "1")
+                        arr_copy_type.Add(v.FILE_INDEX);
+                    else
+                        arr_copy_type.Add("0");
+                }
+                ti.arr_source = arr_file_path.ToArray();
+                ti.copy_type = string.Join(",.,", arr_copy_type);
+
                 ti.source_size = d_source_size;
                 ti.target = di.LOGICAL_NAME;
                 if (di.LOGICAL_TOTALSIZE.HasValue)
@@ -596,6 +658,10 @@ namespace Video_Copy6
                         return;
                     }
                 }
+
+                //待添加硬盘剩余空间的判定
+
+
                 DataGridViewRow dr = new DataGridViewRow();
                 dr.CreateCells(dgv_Task);
                 dr.Cells[0].Value = "0";
@@ -634,5 +700,88 @@ namespace Video_Copy6
 
             }
         }
+
+        private void btn_Import_txt_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "文本文件|*.txt";
+                ofd.Multiselect = false;//是否允许多选，false表示单选
+                if (ofd.ShowDialog() == DialogResult.OK)  //如果点击的是打开文件
+                {
+                    string[] arr_files = Helper_Txt.ReadAllLines(ofd.FileName, Encoding.UTF8);  //获取全路径文件名
+                    int i_count = order_controler.Get_My_Videos(tv_videos, arr_files);
+                    lb_video_order_found.Text = string.Format(str_video_format, i_count);
+                }
+            }
+        }
+
+        private void Refresh_Node_Count()
+        {
+            int i_count = 0;
+            foreach (TreeNode tn in tv_videos.Nodes)
+            {
+                i_count += tn.Nodes.Count;
+            }
+            lb_video_order_found.Text = string.Format(str_video_format, i_count);
+
+        }
+
+        private void btn_Import_Excel_Click(object sender, EventArgs e)
+        {
+            List<T_Video> vs = MyVideoBussiness.GetList_Video_Info_Like("石");
+            SetrichTextBox("....." + vs.Count);
+        }
+
+        private void tv_videos_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if(!string.IsNullOrEmpty(e.Node.Text))
+            {
+                if (e.Node.Level == 0)
+                {
+                    string str_name = e.Node.Text;
+                    str_name = order_controler.replace_string(str_name);
+                    tabControl1.SelectedIndex = 1;
+                    tb_file_name.Text = str_name;
+                    btn_Search.PerformClick();
+                }
+                else if (e.Node.Level == 1)
+                {
+                    e.Node.Remove();
+                    Refresh_Node_Count();
+                }
+            }
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            List<T_Video> vs = new List<T_Video>();
+            for (int i = 0; i < dataGridView2.RowCount; i++)
+            {
+                if (dataGridView2.Rows[i].Cells[0].Value != null && dataGridView2.Rows[i].Cells[0].Value.ToString() == "1")
+                {
+                    vs.Add((T_Video)dataGridView2.Rows[i].Tag);
+                }
+            }
+            if (vs.Count > 0)
+            {
+                if (tv_videos.Nodes.Count > 0)
+                {
+                    foreach (var tvn in vs)
+                    {
+                        TreeNode tn = new TreeNode(tvn.FILE_NAME);
+                        tn.Tag = tvn;
+                        tv_videos.Nodes[tv_videos.Nodes.Count - 1].Nodes.Add(tn);
+                    }
+                    tv_videos.Focus();
+                    tv_videos.Nodes[tv_videos.Nodes.Count - 1].Expand();
+                    tv_videos.SelectedNode = tv_videos.Nodes[tv_videos.Nodes.Count - 1].Nodes[tv_videos.Nodes[tv_videos.Nodes.Count - 1].Nodes.Count -1];//选中
+                    Refresh_Node_Count();
+                    tabControl1.SelectedIndex = 0;
+                }
+            }
+        }
+
+
     }
 }
